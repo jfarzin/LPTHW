@@ -1,0 +1,57 @@
+/* Import fonts */
+
+@font-face {
+    font-family: 'Rimsky';
+    src: url('fonts/Rimsky.woff2') format('woff2'),
+         url('fonts/Rimsky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Carlo Melow';
+    src: url('fonts/Carlo-Melow-Font-by-7NTypes.woff2') format('woff2'),
+         url('fonts/Carlo-Melow-Font-by-7NTypes.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* General setup */
+
+html {
+    font-size: 10px;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+  body {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Typography */
+  
+  h1 {
+    font-size: 3.2rem;
+  }
+  
+  h2 {
+    font-size: 2.4rem;
+  }
+  
+  h1 {
+      font-family: 'Carlo Melow', serif;
+  }
+
+  h2 {
+      font-family: 'Festive', cursive;
+  }
+
+  p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    word-spacing: 0.6rem;
+    font-family: 'Rimsky', sans-serif;
+  }

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Postcard example</title>
+    <style>
+
+        body {
+            font: 1.3rem sans-serif;
+            padding: 0.5rem;
+            margin: 0;
+            background: #222;
+        }
+
+        form {
+            position: relative;
+            width: 740px;
+            height: 498px;
+            margin: 0 auto;
+            padding: 1 em;
+            box-sizing: border-box;
+            background: #FFF url(background.jpg);
+
+            /* we create our grid */
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 10em 1em 1em 1em;
+        }   
+        
+        h1 {
+            font: 1em monospace;
+            align-self: end;
+        }
+
+        #message {
+            grid-row: 1 / 5;
+        }
+
+        #from, #reply {
+            display: flex;
+            padding-top: 0.7em;
+        }
+
+        label {
+            font: 0.8em sans-serif
+        }
+
+        input, textarea {
+            font: 1.4em/1.5em cursive, sans-serif;
+            border: none;
+            padding: 0 10px;
+            margin: 0;
+            width: 80%;
+            background: none;
+        }
+
+        input:focus, textarea:focus {
+            background: rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+
+        textarea {
+            display: block;
+            padding: 10px;
+            margin: 10px 0 0 -10px;
+            width: 100%;
+            height: 90%;
+            border-right: 1px solid;
+            /* resize: none */
+            overflow: auto;
+        }
+
+        button {
+            padding: 5px;
+            margin-top: 1.5em;
+            font: bold 0.6em sans-serif;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background: none;
+            cursor: pointer;
+            transform: rotate(-1.5deg);
+        }
+
+        button:after {
+            content: ">>>";
+        }
+
+        button:hover, button:focus {
+            outline: none;
+            background: #000;
+            color: #FFF;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <h1>to: Mozilla</h1>
+
+        <div id="from">
+            <label for="name">from:</label>
+            <input type="text" id="name" name="name_user">
+        </div>
+
+        <div id="reply">
+            <label for="msg">reply:</label>
+            <input type="email" id="mail" name="user_email">
+        </div>
+
+        <div id="message">
+            <label for="msg">Your message:</label>
+            <textarea id="msg" name="user_message"></textarea>
+        </div>
+
+        <div class="button">
+            <button type="submit">Send your message</button>
+        </div>
+    </form>
+
+</body>
+
+</html>

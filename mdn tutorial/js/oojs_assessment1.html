@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript class example</title>
+  </head>
+
+  <body>
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+  </body>
+
+    <script>
+    function Shape(name, sides, sideLength) {
+        this.name = name;
+        this.sides = sides;
+        this.sideLength = sideLength;
+    }
+
+    // Write your code below here
+    Shape.prototype.calcPerimeter = function() {
+  console.log(this.sides * this.sideLength);
+}
+
+let square = new Shape('square', 4, 5);
+square.calcPerimeter();
+
+let triangle = new Shape('triangle', 3, 3);
+triangle.calcPerimeter();    
+
+// assessment2
+class Shape {
+ constructor(name, sides, sideLength) {
+  this.name = name;
+  this.sides = sides;
+  this.sideLength = sideLength;
+ }
+
+ calcPerimeter(){
+  console.log(this.sides * this.sideLength);
+ }
+}
+
+let square = new Shape('square', 4, 5);
+square.calcPerimeter();
+let triangle = new Shape('triangle', 3, 3);
+triangle.calcPerimeter();
+
+
+// last assessment3
+class Shape {
+ constructor(name, sides, sideLength) {
+  this.name = name;
+  this.sides = sides;
+  this.sideLength = sideLength;
+ }
+
+ calcPerimeter(){
+  console.log(this.sides * this.sideLength);
+ }
+}
+
+class Square extends Shape {
+ constructor(name, sides, sideLength) {
+  super(name, sides, sideLength);
+ }
+ 
+ calcArea() {
+   console.log(this.sideLength * this.sideLength);
+ }
+};
+
+let square = new Square('square', 4, 5);
+square.calcArea();
+
+
+
+
+    </script>
+</html> 

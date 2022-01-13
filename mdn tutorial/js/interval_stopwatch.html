@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple setInterval clock</title>
+    <style>
+      p {
+        font-family: sans-serif;
+      }
+      button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        width: 6em;
+        height: 3.5em;
+        /* padding: 15px 32px; */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;    
+      }
+      button.stop {
+        background-color: #f44336; /* Red */
+      }
+      button.reset {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+        <div>
+          <button class='start' type='button'>Start</button>
+        </div><br>
+        <div>
+            <button class='stop' type='button'>Stop</button>
+        </div><br>
+        <div>
+            <button class='reset' type='button'>Reset</button>
+        </div><br>
+    </form>
+    <p class="clock">Elapsed time: </p>
+    <script>
+      const para = document.querySelector('.clock');
+      const btnStart = document.querySelector('.start');
+      const btnStop = document.querySelector('.stop');
+      const btnReset = document.querySelector('.reset');
+      
+      let elapsedTime = 0;
+      let createClock;
+      
+      function displayTime() {
+        let etHours = Math.round(elapsedTime / 3600);
+        let etMinutes = Math.round((elapsedTime % 3600) / 60);
+        if (etMinutes < 10) {
+            etMinutes = '0' + etMinutes.toString();
+        }
+        let etSeconds = Math.round(elapsedTime % (3600 * 60));
+        if (etSeconds < 10) {
+            etSeconds = '0' + etSeconds.toString();
+        }
+        para.textContent = 'Elapsed time: ' + etHours + ':' + etMinutes + ':' + etSeconds;
+        elapsedTime += 1;
+      };
+
+      btnStart.addEventListener('click', ()=> {
+        btnStart.disabled = true;
+        btnStart.style.backgroundColor = 'lightgreen';
+        btnStart.style.color = 'gray';
+        createClock = setInterval(displayTime, 1000);
+        
+      });
+      
+      btnStop.addEventListener('click', ()=> {
+        btnStart.disabled = false;
+        btnStart.style.backgroundColor = 'green';
+        btnStart.style.color = 'white';
+        clearInterval(createClock);        
+      });
+
+      btnReset.addEventListener('click', ()=> {
+        btnStart.disabled = false;
+        btnStart.style.backgroundColor = 'green';
+        btnStart.style.color = 'white';
+
+        clearInterval(createClock);
+        elapsedTime = 0;
+        displayTime();
+      });
+
+      displayTime();
+      
+    </script>
+  </body>
+</html>

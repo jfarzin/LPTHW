@@ -1,0 +1,23 @@
+html {
+    font-family: sans-serif;
+  }
+  
+  /* Your CSS below here */
+
+  p {
+      width: 200px;
+      height: 75px;
+      text-align: center;
+      line-height: 75px;
+      font-size: 1.125rem; 
+      font-style: bold;
+      /* 18px convert to rem. std font size = 16px. rem = root element's font */
+      background-color: rgb(135, 206, 250);
+      color: lightskyblue;
+      text-shadow: 1px 1px black;
+      border-radius: 1rem;
+      border: 1px solid blue;
+      background: linear-gradient(135deg, rgba(135, 206, 250, 1) 30%, rgba(29,29,32,0.2) 100%);
+      box-shadow:5px 5px 5px black, inset 2px 2px 2px rgba(255, 255, 255, 0.8), inset -2px -2px 2px rgba(0,0,0,0.5);
+
+  }

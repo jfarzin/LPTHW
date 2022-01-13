@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Function start</title>
+    <style>
+      .msgBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 242px;
+        background: #eee;
+      }
+
+      .msgBox p {
+        line-height: 1.5;
+        padding: 10px 20px;
+        color: #333;
+        padding-left: 82px;
+        background-position: 25px center;
+        background-repeat: no-repeat;
+      }
+
+      .msgBox button {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.1rem;
+        color: #aaa;
+      }
+
+    </style>
+  </head>
+  <body>
+    <button>Display message box</button>
+
+    <script>
+
+      // select button and store reference to it as a constant
+      const btn = document.querySelector('button');
+      //call displayMesssage in response to button being clicked
+      btn.onclick = function() {
+          //displayMessage('A new message - woohoo!');
+          //displayMessage('Your inbox is almost full!', 'warning');
+          displayMessage('Brian: Hi, how are you today?', 'chat');
+        };
+
+      function displayMessage(msgText, msgType) {
+        // select html and create reference to it for later use  
+        const html = document.querySelector('html');
+
+        // create div element, store a reference to it called panel
+        const panel = document.createElement('div');
+        // set a class attribute on it called msgbox (--> easier to style)
+        panel.setAttribute('class', 'msgBox');
+        // specifies where to put new div element, in html
+        html.appendChild(panel);
+
+        // create msg p and insert on page inside panel/div element
+        const msg = document.createElement('p');
+        msg.textContent = msgText;
+        panel.appendChild(msg);
+
+        // create btn and insert on panel/div element
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = 'x';
+        panel.appendChild(closeBtn);
+
+        //use event handler to delete panel/div element,
+        //ie. close message box, when clicked
+        closeBtn.onclick = function() {
+            panel.parentNode.removeChild(panel);
+        }
+        //this JS creates code the is equivalent to the following html:
+        //<div class = "msgbox">
+        //  <p>This is a message box</p>
+        //  <button>x</button>
+        //</div>  
+        
+        //style msg box depending on msgType
+        if (msgType === 'warning') {
+            msg.style.backgroundImage = 'url(icons/warning.png)';
+            panel.style.backgroundColor = 'red';
+        } else if (msgType === 'chat') {
+            msg.style.backgroundImage = 'url(icons/chat.png)';
+            panel.style.backgroundColor = 'aqua';
+        } else {
+            msg.style.paddingLeft = '20px';
+        }
+    
+
+      }
+
+      //to call the function we've created, on page opening
+      //displayMessage();
+
+    </script>
+  </body>
+</html>

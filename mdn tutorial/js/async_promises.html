@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+  </head>
+  <body>
+  </body>
+  <script>
+      let promise = fetch('coffee.jpg');
+      // once jpg available --> return as a blob
+      let promise2 = promise.then(response => {
+          if (!response.ok) {
+              throw new Error('HTTP error! status: ${response.status}');
+          } else {
+              return response.blob();
+          }
+      });
+      //each call to .then() creates a new promise
+      let promise3 = promise2.then(myBlob => {
+          let objectURL = URL.createObjectURL(myBlob);
+          let image = document.createElement('img');
+          image.src = objectURL;
+          document.body.appendChild(image);
+      });
+      // add error handling with .catch()
+      let errorCase = promise3.catch(e => {
+          console.log('There was a problem with your fetch operation: ' + e.message);
+      });
+  </script>
+</html>

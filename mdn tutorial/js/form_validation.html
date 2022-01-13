@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Favorite fruit start</title>
+    <style>
+      input:invalid {
+        border: 2px dashed red;
+      }
+
+      input:invalid:required {
+          background-image: linear-gradient(to right, pink, lightgreen);
+      }
+
+      input:valid {
+        border: 2px solid black;
+      }
+    </style>
+</head>
+
+<body>
+    <form>
+    <div>
+      <label for="choose">Would you prefer a banana or a cherry?</label>
+      <input id="choose" name="i_like" required minlength="6" maxlength="6">
+    </div>
+    <div>
+      <label for="number">How many would you like?</label>
+      <input type="number" id="number" name="amount" value="1" min="1" max="10">
+    </div>
+    <div>
+      <label for="mail">I would like you to provide me with an email address:</label>
+      <input type="email" id="mail" name="mail">
+    </div>  
+    <div>
+      <button>Submit</button>
+    </div>
+    </form>
+</body>
+    <script>
+        const email = document.getElementById("mail");
+        email.addEventListener("input", function(e) {
+            if (email.validity.typeMismatch) {
+                email.setCustomValidity("I am expecting an email address!");
+            } else {
+                email.setCustomValidity("");
+            }
+        });
+    </script>
+</html>

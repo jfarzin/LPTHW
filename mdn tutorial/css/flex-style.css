@@ -1,0 +1,140 @@
+/* import fonts  */
+
+@font-face {
+    font-family: 'The Racoon Quest Demo';
+    src: url('fonts/TheRacoonQuestDemo-Regular.woff2') format('woff2'),
+         url('fonts/TheRacoonQuestDemo-Regular.woff') format('woff');
+         font-weight: normal;
+         font-style: normal;
+}
+
+
+/* General setup */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0 auto;
+    min-width: 1000px;
+    max-width: 1400px;
+  }
+  
+  /* Layout */
+  
+  section {
+    float: left;
+    width: 50%;
+  }
+  
+  aside {
+    float: left;
+    width: 30%;
+  }
+  
+  nav {
+    float: left;
+    width: 20%;
+  }
+  
+  footer {
+    clear: both;
+  }
+  
+  header, section, aside, nav, footer {
+    padding: 20px;
+  }
+  
+  /* header and footer */
+  
+  header, footer {
+    border-top: 5px solid #a66;
+    border-bottom: 5px solid #a66;
+  }
+  
+  /* WRITE YOUR CODE BELOW HERE */
+/* font styling */
+
+html {
+    font-size: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+h1, h2 {
+    font-family: 'The Racoon Quest Demo', 'Times New Roman', Times, serif;
+    letter-spacing: 2px;
+}
+
+h1 { 
+    font-size: 5em;
+    text-align: center;
+}
+h2 {
+    font-size: 3em;
+}
+
+body {
+    font-size: 1.5em;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    line-height: 1.5em;
+}
+
+h2+p {
+    text-indent: 20px;
+}
+
+/* link styling */
+
+a {
+  text-decoration: underline;
+  outline: none;
+}
+
+a:link, a:visited, a:focus, a:hover {
+  color: #a66;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  color: darkgray;
+}
+
+a[href*="http"] {
+    background: url('icons8-external-link-26.png') no-repeat 100% 0;
+    background-size: 15px 15px;
+    padding-right: 18px
+}
+
+/* styling lists */
+
+ul, ol {
+    line-height: 1.5em;
+}
+
+nav ul { 
+    padding: 0;
+    width: 100%;
+}
+nav li {
+    display: block;
+}
+nav a {
+    outline: none;
+    text-decoration: none;
+    display:block;
+    width: 80%;
+    text-align: center;
+    line-height: 3em;
+    border: 2px solid #a66;
+    margin-block-end: 2em;
+    letter-spacing: 2px;
+}

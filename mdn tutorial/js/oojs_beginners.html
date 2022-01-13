@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript class example</title>
+  </head>
+
+  <body>
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+  </body>
+
+    <script>
+      function Person(first, last, age, gender, interests) {
+        // property and method definitions
+        this.name = {
+          'first': first,
+          'last' : last
+        };
+        this.age = age;
+        this.gender = gender;
+        if (this.gender === 'male') {
+            this.pronoun = 'He';
+        } else if (this.gender === 'female') {
+            this.pronoun = 'She';
+        } else {
+            this.pronoun = 'They';
+        }
+        this.interestsPhrase = '';
+        for (let i = 0; i < interests.length; i++) {
+            this.interestsPhrase += interests[i] + ', and ';
+        }
+        this.interestsPhrase = this.interestsPhrase.slice(0,this.interestsPhrase.length-6) + '.'
+      };
+
+      Person.prototype.bio = function() {
+          alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ' + this.pronoun + ' likes ' + this.interestsPhrase);
+      };
+      Person.prototype.greeting = function() {
+          alert('Hi! I\'m ' + this.name.first + '.');
+        };
+      Person.prototype.farewell = function() {
+        alert(this.name.first + ' has left the building. Bye!');
+      };
+
+      let person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+      let person2 = new Person('Sarah', 'Del', 29, 'female', ['cookery', 'travel', 'Nate']);
+
+      function Teacher(first, last, age, gender, interests, subject) {
+        Person.call(this, first, last, age, gender, interests);
+        
+        this.subject = subject;
+      };
+
+      Teacher.prototype = Object.create(Person.prototype);
+      Object.defineProperty(Teacher.prototype, 'constructor', {
+        value: Teacher,
+        enumerable: false, // so that it does not appear in 'for in' loop
+        writable: true
+      });
+
+      Teacher.prototype.greeting = function() {
+        let prefix;
+        if (this.gender === 'male') {
+            prefix = 'Mr.';
+        } else if (this.gender === 'female') {
+            prefix = 'Ms.';
+        } else {
+            prefix = 'Mx.';
+        };
+        alert('Hello. My name is ' + prefix + ' ' + this.name.last + ' and I teach ' + this.subject + '.');
+      };
+
+      let teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery'], 'mathematics');
+
+      function Student(first, last, age, gender, interests, graduates) {
+        Person.call(this, first, last, age, gender, interests);
+        
+        this.graduates = graduates;
+      };
+
+      Student.prototype = Object.create(Person.prototype);
+      Object.defineProperty(Student.prototype, 'constructor', {
+        value: Student,
+        enumerable: false,
+        writable: true
+      });
+
+
+      Student.prototype.greeting = function() {
+        alert('Yo. I\'m ' + this.name.first + ' and I graduate in ' + this.graduates + '.');
+      };
+
+      let student1 = new Student('Sam', 'Farzin', 20, 'male', ['music', 'skateboarding'], 2023);
+
+    </script>
+</html> 
